@@ -1,4 +1,4 @@
-# **EdgeAI-FederatedLearning with Syft and TensorFlow**
+# **Edge AI Federated Learning with Syft and TensorFlow**
 
 This project implements a **federated learning system** for **Edge AI**, using **PySyft** and **TensorFlow** to train models on decentralized devices while preserving data privacy. Each device (client) trains the model locally on its data, and only the model updates (parameters) are shared with a central server for aggregation.
 
