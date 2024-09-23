@@ -1,0 +1,44 @@
+# TensorFlow for deep learning
+tensorflow==2.6.0
+
+# PySyft for federated learning
+syft==0.6.0
+
+# NumPy for numerical operations
+numpy
+
+# Pandas for data manipulation
+pandas
+
+# Pillow for image processing (for datasets like FEMNIST)
+Pillow==8.2.0
+
+# Matplotlib for plotting and visualization
+matplotlib
+
+# Scikit-learn for machine learning utilities
+scikit-learn
+
+# TensorFlow Federated for experimental federated learning support (optional)
+tensorflow-federated
+
+# Flask for creating a simple API to serve model predictions (optional)
+Flask==2.0.1
+
+# PyTest for running tests
+pytest==6.2.4
+
+# Flask-Cors to handle CORS in Flask (optional)
+Flask-Cors==3.0.10
+
+# Jupyter for running notebooks (optional)
+jupyterlab==3.0.16
+
+# PyYaml for parsing configuration files
+PyYAML==5.4.1
+
+# OpenCV for computer vision (optional, if needed for image processing tasks)
+opencv-python==4.5.3.56
+
+# tqdm for progress bars
+tqdm==4.61.2

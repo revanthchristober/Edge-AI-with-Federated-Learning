@@ -1,0 +1,45 @@
+# environment.yaml
+
+environment:
+  device:
+    use_gpu: true  # Set to false to use CPU
+    gpu_id: 0  # Which GPU to use (0, 1, 2, etc.)
+    allow_mixed_precision: true  # Enable mixed precision for faster training on supported hardware
+
+data:
+  dataset_name: "FEMNIST"  # Dataset to use for federated learning
+  raw_data_dir: "./data/raw"  # Path to raw data
+  processed_data_dir: "./data/processed"  # Path to preprocessed data
+  test_data_dir: "./data/test"  # Path to test data
+  batch_size: 64  # Batch size for training and evaluation
+  use_augmentation: true  # Whether to use data augmentation
+  shuffle_data: true  # Shuffle data before training
+
+syft:
+  syft_version: "0.8.3"  # Version of Syft to be used
+  use_virtual_machines: true  # Use virtual machines (VMs) for simulation of nodes
+  server_port: 8777  # Port to run Syft server
+  client_ports:  # Port ranges for Syft clients
+    start: 8800
+    end: 8810
+
+tensorflow:
+  tensorflow_version: "2.14.0"  # TensorFlow version to use
+  use_tensorboard: true  # Enable TensorBoard for monitoring
+  log_dir: "./logs"  # Directory to store TensorBoard logs
+
+communication:
+  max_bandwidth: 100  # Maximum bandwidth (in Mbps) allowed for client-server communication
+  latency_simulation: false  # Simulate latency in communication
+  encryption: true  # Encrypt communication between nodes
+
+logging:
+  log_level: "INFO"  # Logging level: DEBUG, INFO, WARNING, ERROR, CRITICAL
+  log_file: "training_log.txt"  # Log file to store training logs
+  log_to_console: true  # Enable logging to console
+
+checkpointing:
+  enable_checkpoints: true  # Enable saving checkpoints during training
+  checkpoint_interval: 5  # Save model checkpoints every N rounds
+  checkpoint_dir: "./checkpoints"  # Directory to store model checkpoints
+

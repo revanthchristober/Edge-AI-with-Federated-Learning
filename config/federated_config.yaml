@@ -1,0 +1,39 @@
+# federated_config.yaml
+
+federated_learning:
+  num_clients: 10  # Number of client nodes
+  server:
+    aggregation_strategy: "FedAvg"  # Aggregation strategy: 'FedAvg', 'FedProx', etc.
+    rounds: 5  # Number of communication rounds between server and clients
+    global_model_sync_frequency: 1  # Frequency (in rounds) to sync the global model
+    evaluation_frequency: 1  # Evaluate the model after every round
+    federated_optimizer: "FedAdam"  # Option to use a federated optimizer, such as FedAdam
+
+client:
+  local_training_epochs: 2  # Number of local epochs per client between global model updates
+  batch_size: 32  # Batch size for local training on client nodes
+  learning_rate: 0.001  # Local learning rate for clients
+
+communication:
+  client_upload_interval: 2  # Interval (in seconds) between client updates
+  server_timeout: 600  # Timeout (in seconds) for server to wait for client responses
+
+privacy:
+  differential_privacy: true  # Enable differential privacy during model updates
+  epsilon: 1.0  # Privacy budget for differential privacy
+  delta: 1e-5  # Delta value for differential privacy
+  clipping_norm: 1.0  # Gradient clipping norm to prevent data leakage
+
+security:
+  secure_aggregation: true  # Use secure aggregation to ensure privacy-preserving model updates
+  encryption: "Paillier"  # Encryption scheme for secure aggregation: 'Paillier', 'Homomorphic', etc.
+
+compression:
+  use_compression: true  # Enable model compression to reduce communication overhead
+  compression_algorithm: "topk_sparsification"  # Compression algorithm to use: 'topk_sparsification', 'quantization'
+  sparsity: 0.1  # Sparsity level (fraction of weights to keep after compression)
+
+logging:
+  log_communication: true  # Log communication details between clients and server
+  log_model_updates: true  # Log model update details for analysis
+  log_file: "federated_training.log"  # Log file to store the training logs

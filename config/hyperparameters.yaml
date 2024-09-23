@@ -1,0 +1,40 @@
+# hyperparameters.yaml
+
+model:
+  name: "CNN"  # Model name: CNN, LSTM, etc.
+  input_shape: [28, 28, 1]  # Input shape for FEMNIST dataset
+  output_classes: 62  # 62 classes (digits, uppercase, lowercase)
+  cnn:
+    conv_layers: 2
+    filters: [32, 64]  # Number of filters for each Conv2D layer
+    kernel_size: [3, 3]  # Kernel size for Conv2D layers
+    dense_units: 128  # Number of units in the dense layer
+    activation: "relu"
+    dropout: 0.5  # Dropout rate for regularization
+
+  lstm:
+    lstm_units: 128
+    dense_units: 64
+    dropout: 0.5
+
+training:
+  learning_rate: 0.001  # Learning rate for model training
+  batch_size: 64  # Batch size for training
+  epochs: 20  # Number of training epochs
+  optimizer: "adam"  # Optimizer to be used: 'adam', 'sgd', etc.
+  loss_function: "categorical_crossentropy"  # Loss function
+  metrics: ["accuracy"]  # Metrics to monitor during training
+
+# Data augmentation options
+augmentation:
+  use_augmentation: true
+  rotation_range: 10  # Rotate images by up to 10 degrees
+  width_shift_range: 0.1  # Shift images horizontally by 10% of width
+  height_shift_range: 0.1  # Shift images vertically by 10% of height
+  zoom_range: 0.2  # Zoom images by up to 20%
+
+evaluation:
+  test_batch_size: 64  # Batch size for evaluation
+  validation_split: 0.1  # Fraction of data to use as validation set
+  early_stopping_patience: 5  # Number of epochs without improvement before stopping
+

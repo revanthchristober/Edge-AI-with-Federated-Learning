@@ -1,0 +1,52 @@
+version: '3.8'
+
+services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: federated_server
+    ports:
+      - "5000:5000"
+    environment:
+      - NODE_TYPE=server
+    command: python /app/federated_system/server_node.py
+
+  client_1:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: federated_client_1
+    environment:
+      - NODE_TYPE=client
+      - CLIENT_ID=1
+      - SERVER_URL=http://federated_server:5000
+    depends_on:
+      - server
+    command: python /app/federated_system/client_node.py
+
+  client_2:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: federated_client_2
+    environment:
+      - NODE_TYPE=client
+      - CLIENT_ID=2
+      - SERVER_URL=http://federated_server:5000
+    depends_on:
+      - server
+    command: python /app/federated_system/client_node.py
+
+  client_3:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: federated_client_3
+    environment:
+      - NODE_TYPE=client
+      - CLIENT_ID=3
+      - SERVER_URL=http://federated_server:5000
+    depends_on:
+      - server
+    command: python /app/federated_system/client_node.py
